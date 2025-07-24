@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Automático</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Chat Automático - Seleção de Atendente</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="chatbox" id="chat">
-    <h2>🤖 Automatizador de chat o manizado no mero um 🤖</h2>
-    <p id="saudacao"></p>
-    <select id="categoria" onchange="atualizarOpcoes()">
-        <option value="">Todas as Categorias</option>
-        <option value="financeiro">Financeiro</option>
-        <option value="suporte">Suporte</option>
-        <option value="geral">Geral</option>
-    </select>
-    <select id="opcoes" onchange="responder()"></select>
-    <div class="title-container" id="titleContainer" style="display: none;">
-        <input type="text" id="titulo" placeholder="Título">
-        <button onclick="salvarNovoTitulo()">Alterar Título</button>
-    </div>
-    <textarea class="message" id="resposta" placeholder="Selecione uma opção para receber uma resposta automática."></textarea>
-    <div class="controls">
-        <button onclick="copiarTexto()">Copiar</button>
-        <select id="editarAcoes" onchange="executarAcaoEditar(this.value)">
-            <option value="">Editar</option>
-            <option value="salvar">Salvar</option>
-            <option value="alterarCategoria">Alterar Categoria</option>
-            <option value="apagar">Apagar</option>
-            <option value="adicionar">Adicionar</option>
-            <option value="editarTitulo">Editar Título</option>
-        </select>
-        <button onclick="exportarDados()">Exportar Dados</button>
-    </div>
-</div>
-<script src="script.js"></script>
+  <h2>Seleção de Atendente</h2>
+  <select id="selecaoAtendente">
+    <option value="">Escolha um atendente</option>
+  </select>
+  <button onclick="selecionarAtendente()">Confirmar</button>
+
+  <div id="personalizacao" style="display: none;">
+    <h3>Configurações do Atendente</h3>
+    <label>Tema:</label>
+    <select id="tema">
+      <option value="claro">Claro</option>
+      <option value="escuro">Escuro</option>
+      <option value="azul">Azul</option>
+    </select><br>
+    <label>Cor de Fundo:</label>
+    <input type="color" id="corFundo" value="#ffffff"><br>
+    <label>Respostas Automáticas:</label><br>
+    <textarea id="textoSalvo" rows="5" cols="50" placeholder="Digite respostas automáticas ou texto personalizado"></textarea><br>
+    <button onclick="salvarConfiguracoes()">Salvar Configurações</button>
+  </div>
+
+  <div id="conteudo">Nenhum atendente selecionado.</div>
+
+  <script src="script.js"></script>
 </body>
 </html>
