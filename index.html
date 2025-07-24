@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Automático</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>Login Simples</title>
 </head>
 <body>
-<script src="script.js"></script>
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Usuário"><br>
+  <input type="password" id="password" placeholder="Senha"><br>
+  <button onclick="fazerLogin()">Entrar</button>
+
+  <script>
+    // Credenciais fixas (NÃO SEGURO)
+    const usuarios = [
+      { usuario: "admin", senha: "12345" },
+      { usuario: "user", senha: "abcde" }
+    ];
+
+    function fazerLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const usuarioValido = usuarios.find(
+        (u) => u.usuario === username && u.senha === password
+      );
+
+      if (usuarioValido) {
+        localStorage.setItem("logado", "true");
+        alert("Login bem-sucedido!");
+        window.location.href = "dashboard.html"; // Redireciona para outra página
+      } else {
+        alert("Usuário ou senha inválidos!");
+      }
+    }
+  </script>
 </body>
 </html>
